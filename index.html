@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PratikSpyder | AI Developer</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- THREE JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+<!-- ================= THEME TOGGLE ================= -->
+
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <div class="nav-container">
+    
+    <div class="logo">PratikSpyder</div>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+
+  <div class="hero-box">
+
+    <h1>Hi, I'm <span class="highlight">Pratik</span></h1>
+
+    <h3>AI Developer | Cybersecurity Enthusiast | Automation Builder</h3>
+
+    <p>
+      I design and develop intelligent AI assistants, smart automation systems,
+      and futuristic technology solutions.
+    </p>
+
+    <p>
+      Currently building my advanced AI assistant (Jarvis) with voice control,
+      face recognition, cybersecurity tools, and smart system monitoring.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="main-btn" onclick="startListening()">Activate Jarvis</button>
+      <button class="outline-btn" onclick="document.querySelector('.project').scrollIntoView({behavior:'smooth'})">
+        View Projects
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<button id="themeToggle" class="theme-toggle">🌙</button>
+<canvas id="spaceCanvas"></canvas>
+
+<!-- ================= SKILLS ================= -->
+<section class="skills" id="skills">
+  <h2>Skills</h2>
+
+  <div class="skills-container">
+    <div class="skill">Python</div>
+    <div class="skill">HTML</div>
+    <div class="skill">CSS</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">C / C++</div>
+    <div class="skill">Java</div>
+    <div class="skill">SQL</div>
+    <div class="skill">Linux</div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="about-container">
+
+    <div class="about-image">
+      <img src="pratik.jpeg" alt="Pratik Profile" width="400">
+    </div>
+
+    <div class="about-content">
+      <h2>About Me</h2>
+
+      <p>
+        Hi, I am <strong>Pratik</strong>, an AI developer and tech enthusiast.
+        I specialize in building intelligent systems like my own AI assistant (Jarvis).
+      </p>
+
+      <p>
+        My focus areas include Artificial Intelligence, Cybersecurity,
+        Automation, and Smart System Development.
+      </p>
+
+      <div class="about-highlights">
+
+        <div class="highlight">
+          <h3>AI Development</h3>
+          <p>Building smart assistants and automation tools.</p>
+        </div>
+
+        <div class="highlight">
+          <h3>Cybersecurity</h3>
+          <p>Learning ethical hacking and system security.</p>
+        </div>
+
+        <div class="highlight">
+          <h3>Future Tech</h3>
+          <p>Creating powerful digital solutions.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="project">
+  <h2>Projects</h2>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Jarvis AI Assistant</h3>
+      <p>
+        Voice commands, automation, system control,
+        face recognition, and smart responses using Python.
+      </p>
+    </div>
+
+    <div class="project-card">
+      <h3>AI Portfolio Website</h3>
+      <p>
+        3D animated background, voice interaction,
+        professional UI, and futuristic design.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+
+  <h2>Contact Me</h2>
+
+  <div class="contact-box">
+
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-links">
+      <button onclick="window.open('https://github.com/pratikspy','_blank')">
+        GitHub
+      </button>
+
+      <button onclick="window.open('https://linkedin.com/in/pratik-mestri-806051339','_blank')">
+        LinkedIn
+      </button>
+
+      <button onclick="window.open('resume.pdf')">
+        Download Resume
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>© 2026 PratikSpyder | AI Developer</p>
+</footer>
+
+<!-- ================= JARVIS VOICE SCRIPT ================= -->
+<script>
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+
+  const recognition = new SpeechRecognition();
+  recognition.continuous = true;
+  recognition.lang = "en-US";
+
+  function speak(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.rate = 1;
+    window.speechSynthesis.speak(speech);
+  }
+
+  window.startListening = function () {
+    speak("Hello, I am Jarvis. Listening for commands.");
+    recognition.start();
+  };
+
+  recognition.onresult = (event) => {
+    const command =
+      event.results[event.results.length - 1][0].transcript.toLowerCase();
+
+    if (command.includes("open get up")) {
+      speak("Opening your GitHub profile");
+      window.open("https://github.com/pratikspy", "_blank");
+    }
+
+    else if (command.includes("open linkedin")) {
+      speak("Opening LinkedIn");
+      window.open("https://linkedin.com/in/pratik-mestri-806051339", "_blank");
+    }
+
+    else if (command.includes("open resume")) {
+      speak("Opening resume");
+      window.open("resume.pdf");
+    }
+
+    else if (command.includes("show about")) {
+      speak("Opening about section");
+      document.getElementById("about")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+
+    else if (command.includes("show skills")) {
+      speak("Opening skills section");
+      document.getElementById("skills")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+
+    else if (command.includes("show contact")) {
+      speak("Opening contact section");
+      document.getElementById("contact")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+
+    else if (command.includes("stop listening")) {
+      speak("Jarvis offline");
+      recognition.stop();
+    }
+  };
+
+} else {
+  console.log("Speech Recognition not supported in this browser.");
+}
+</script>
+
+<!-- ================= THEME TOGGLE SCRIPT ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const toggleBtn = document.getElementById("themeToggle");
+
+  toggleBtn.addEventListener("click", function () {
+
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+      toggleBtn.innerHTML = "🌞";
+    } else {
+      toggleBtn.innerHTML = "🌙";
+    }
+
+  });
+
+});
+</script>
+
+</body>
+</html>
